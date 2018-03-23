@@ -1,0 +1,15 @@
+D:\RA60-2015\bukibratelab3vec\implementation\system.ngc 1521802902
+D:/RA60-2015/bukibratelab3vec/implementation/system_dip_switches_wrapper.ngc 1521802854
+D:/RA60-2015/bukibratelab3vec/implementation/system_my_peripheral_1_wrapper.ngc 1521802883
+D:/RA60-2015/bukibratelab3vec/implementation/system_rs232_wrapper.ngc 1521802854
+D:/RA60-2015/bukibratelab3vec/implementation/system_proc_sys_reset_0_wrapper.ngc 1521802853
+D:/RA60-2015/bukibratelab3vec/implementation/system_clock_generator_0_wrapper.ngc 1521802888
+D:/RA60-2015/bukibratelab3vec/implementation/system_microblaze_0_ilmb_wrapper.ngc 1521802853
+D:/RA60-2015/bukibratelab3vec/implementation/system_microblaze_0_dlmb_wrapper.ngc 1521802853
+D:/RA60-2015/bukibratelab3vec/implementation/system_axi4lite_0_wrapper.ngc 1521802892
+D:/RA60-2015/bukibratelab3vec/implementation/system_microblaze_0_wrapper.ngc 1521802854
+D:/RA60-2015/bukibratelab3vec/implementation/system_microblaze_0_i_bram_ctrl_wrapper.ngc 1521802853
+D:/RA60-2015/bukibratelab3vec/implementation/system_microblaze_0_d_bram_ctrl_wrapper.ngc 1521802853
+D:/RA60-2015/bukibratelab3vec/implementation/system_debug_module_wrapper.ngc 1521802854
+D:/RA60-2015/bukibratelab3vec/implementation/system_microblaze_0_bram_block_wrapper.ngc 1521802853
+OK

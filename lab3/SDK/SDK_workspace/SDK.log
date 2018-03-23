@@ -1,0 +1,47 @@
+11:31:47.234 INFO  - Processing command line option -hwspec D:\RA60-2015\bukibratelab3vec\SDK\SDK_Export\hw\system.xml. 
+11:50:20.304 ERROR - FPGA Configuration failed.Connection to Board Failed
+
+Failed to Scan JTAG Chain
+    Unknown Error
+ 
+11:53:01.126 ERROR - FPGA Configuration failed.Connection to Board Failed
+
+Failed to Scan JTAG Chain
+    Unknown Error
+ 
+11:54:01.125 ERROR - FPGA Configuration failed.Connection to Board Failed
+
+
+    Failed to Open JTAG Cable
+    Cable target is not connected to the host
+ 
+11:56:34.882 INFO  - FPGA configured successfully with bitstream "D:/RA60-2015/bukibratelab3vec/SDK/SDK_workspace/bukibratelab3vec_hw_platform/download.bit" 
+12:00:39.600 ERROR - Unexpected error while parsing XMD response ?: com.google.gson.JsonSyntaxException: com.google.gson.stream.MalformedJsonException: invalid number or unquoted string near  
+12:01:22.379 INFO  - FPGA configured successfully with bitstream "D:/RA60-2015/bukibratelab3vec/SDK/SDK_workspace/bukibratelab3vec_hw_platform/download.bit" 
+12:07:39.537 ERROR - Unexpected error while parsing XMD response ?: com.google.gson.JsonSyntaxException: com.google.gson.stream.MalformedJsonException: invalid number or unquoted string near  
+12:05:11.507 INFO  - Processing command line option -hwspec D:\RA60-2015\bukibratelab3vec\SDK\SDK_Export\hw\system.xml. 
+12:05:14.163 INFO  - The hardware specification for project 'bukibratelab3vec_hw_platform' is different from D:\RA60-2015\bukibratelab3vec\SDK\SDK_Export\hw\system.xml. 
+12:05:14.288 INFO  - Copied contents of D:\RA60-2015\bukibratelab3vec\SDK\SDK_Export\hw\system.xml into \bukibratelab3vec_hw_platform\system.xml. 
+12:05:14.288 INFO  - Copied contents of D:\RA60-2015\bukibratelab3vec\SDK\SDK_Export\hw\system.bit into \bukibratelab3vec_hw_platform\system.bit. 
+12:05:14.303 INFO  - Copied contents of D:\RA60-2015\bukibratelab3vec\SDK\SDK_Export\hw\system_bd.bmm into \bukibratelab3vec_hw_platform\system_bd.bmm. 
+12:05:14.709 INFO  - Synchronizing projects in the workspace with the hardware platform specification changes. 
+12:05:17.607 INFO  - Updating MSS for Board Support Package Project: hello_world_bsp.
+		 The following driver assignments were removed:
+			Peripheral Instance: leds, driver: gpio_v3_01_a.
+		 The following new driver assignments were made:
+			Peripheral Instance: my_peripheral_1, driver: generic_v1_00_a.
+ 
+12:05:18.388 INFO  - Updating MSS for Board Support Package Project: standalone_bsp_0.
+		 The following driver assignments were removed:
+			Peripheral Instance: leds, driver: gpio_v3_01_a.
+		 The following new driver assignments were made:
+			Peripheral Instance: my_peripheral_1, driver: generic_v1_00_a.
+ 
+12:05:35.462 INFO  - Updating hardware inferred compiler options for hello_world. 
+12:05:35.478 INFO  - Clearing existing target manager status. 
+12:17:27.539 INFO  - FPGA configured successfully with bitstream "D:/RA60-2015/bukibratelab3vec/SDK/SDK_workspace/bukibratelab3vec_hw_platform/download.bit" 
+12:18:20.728 ERROR - Unable to disconnect from existing targets java.lang.NullPointerException
+	at com.xilinx.sdk.targetmanager.internal.json.XMDJSONProcess.issueCommand(Unknown Source)
+	at com.xilinx.sdk.targetmanager.internal.TM.disconnectTarget(Unknown Source)
+
+12:18:20.728 ERROR - Unexpected error while parsing XMD response ?: com.google.gson.JsonSyntaxException: com.google.gson.stream.MalformedJsonException: invalid number or unquoted string near  

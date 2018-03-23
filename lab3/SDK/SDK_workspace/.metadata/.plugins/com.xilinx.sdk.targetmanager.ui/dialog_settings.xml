@@ -1,0 +1,6 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<section name="Workbench">
+	<item value="D:\RA60-2015\bukibratelab3vec\SDK\SDK_workspace\pozdravsvetepozdrav\Debug\pozdravsvetepozdrav.elf" key="bukibratelab3vec_hw_platform-microblaze_0-initElf"/>
+	<item value="D:\RA60-2015\bukibratelab3vec\SDK\SDK_workspace\bukibratelab3vec_hw_platform\system_bd.bmm" key="bukibratelab3vec_hw_platform-bmmFile"/>
+	<item value="D:\RA60-2015\bukibratelab3vec\SDK\SDK_workspace\bukibratelab3vec_hw_platform\system.bit" key="bukibratelab3vec_hw_platform-bitFile"/>
+</section>

@@ -1,0 +1,6 @@
+12:17:28 **** Auto Build of project pozdravsvetepozdrav_bsp ****
+make -k all 
+'Finished building libraries'
+
+12:17:28 Build Finished (took 109ms)
+
