@@ -101,6 +101,21 @@ entity user_logic is
 	 LED_Data : out std_logic_vector(7 downto 0);
 	 DIP_Data : in std_logic_vector(7 downto 0);
     -- ADD USER PORTS ABOVE THIS LINE ------------------
+	
+	dir_pixel_column_o_U  : out std_logic_vector(10 downto 0);
+    dir_pixel_row_o_U     : out std_logic_vector(10 downto 0);
+	vga_hsync_o_U         : out std_logic;
+    vga_vsync_o_U         : out std_logic;
+    blank_o_U             : out std_logic;
+    pix_clock_o_U         : out std_logic;
+    vga_rst_n_o_U         : out std_logic;
+    psave_o_U             : out std_logic;
+    sync_o_U              : out std_logic;
+    red_o_U               : out std_logic_vector(7 downto 0); 
+    green_o_U             : out std_logic_vector(7 downto 0); 
+    blue_o_U              : out std_logic_vector(7 downto 0);
+	clk_i                 : in  std_logic;
+    rst_n_i               : in  std_logic;
 
     -- DO NOT EDIT BELOW THIS LINE ---------------------
     -- Bus protocol ports, do not add to or delete
@@ -142,6 +157,80 @@ architecture IMP of user_logic is
   signal slv_ip2bus_data                : std_logic_vector(C_SLV_DWIDTH-1 downto 0);
   signal slv_read_ack                   : std_logic;
   signal slv_write_ack                  : std_logic;
+  
+  signal clk_s               			: std_logic;
+  signal reset_n_s           			: std_logic;
+  signal direct_mode_s       			: std_logic; -- 0 - text and graphics interface mode, 1 - direct mode (direct force RGB component)
+  signal dir_red_s           			: std_logic_vector(7 downto 0);
+  signal dir_green_s         			: std_logic_vector(7 downto 0);
+  signal dir_blue_s          			: std_logic_vector(7 downto 0);
+  signal display_mode_s      			: std_logic_vector(1 downto 0);  -- 01 - text mode, 10 - graphics mode, 11 - text and graphics
+    -- text mode interface
+  signal text_addr_s         			: std_logic_vector(MEM_ADDR_WIDTH-1 downto 0);
+  signal text_data_s         			: std_logic_vector(TEXT_MEM_DATA_WIDTH-1 downto 0);
+  signal text_we_s           			: std_logic;
+    -- graphics mode interface
+  signal graph_addr_s        			: std_logic_vector(GRAPH_MEM_ADDR_WIDTH-1 downto 0);
+  signal graph_data_s        			: std_logic_vector(GRAPH_MEM_DATA_WIDTH-1 downto 0);
+  signal graph_we_s          			: std_logic;
+    -- cfg
+  signal font_size_s         			: std_logic_vector(3 downto 0);
+  signal show_frame_s       			: std_logic;
+  signal foreground_color_s  			: std_logic_vector(23 downto 0);
+  signal background_color_s  			: std_logic_vector(23 downto 0);
+  signal frame_color_s       			: std_logic_vector(23 downto 0);
+  
+  
+  component vga_top is 
+  generic (
+    H_RES                : natural := 640;
+    V_RES                : natural := 480;
+    MEM_ADDR_WIDTH       : natural := 32;
+    GRAPH_MEM_ADDR_WIDTH : natural := 32;
+    TEXT_MEM_DATA_WIDTH  : natural := 32;
+    GRAPH_MEM_DATA_WIDTH : natural := 32;
+    RES_TYPE             : natural := 0;       
+    MEM_SIZE             : natural := 4800
+    );
+  port (
+    clk_i               : in  std_logic;
+    reset_n_i           : in  std_logic;
+    --
+    direct_mode_i       : in  std_logic; -- 0 - text and graphics interface mode, 1 - direct mode (direct force RGB component)
+    dir_red_i           : in  std_logic_vector(7 downto 0);
+    dir_green_i         : in  std_logic_vector(7 downto 0);
+    dir_blue_i          : in  std_logic_vector(7 downto 0);
+    dir_pixel_column_o  : out std_logic_vector(10 downto 0);
+    dir_pixel_row_o     : out std_logic_vector(10 downto 0);
+    -- mode interface
+    display_mode_i      : in  std_logic_vector(1 downto 0);  -- 01 - text mode, 10 - graphics mode, 11 - text and graphics
+    -- text mode interface
+    text_addr_i         : in  std_logic_vector(MEM_ADDR_WIDTH-1 downto 0);
+    text_data_i         : in  std_logic_vector(TEXT_MEM_DATA_WIDTH-1 downto 0);
+    text_we_i           : in  std_logic;
+    -- graphics mode interface
+    graph_addr_i        : in  std_logic_vector(GRAPH_MEM_ADDR_WIDTH-1 downto 0);
+    graph_data_i        : in  std_logic_vector(GRAPH_MEM_DATA_WIDTH-1 downto 0);
+    graph_we_i          : in  std_logic;
+    -- cfg
+    font_size_i         : in  std_logic_vector(3 downto 0);
+    show_frame_i        : in  std_logic;
+    foreground_color_i  : in  std_logic_vector(23 downto 0);
+    background_color_i  : in  std_logic_vector(23 downto 0);
+    frame_color_i       : in  std_logic_vector(23 downto 0);
+    -- vga
+    vga_hsync_o         : out std_logic;
+    vga_vsync_o         : out std_logic;
+    blank_o             : out std_logic;
+    pix_clock_o         : out std_logic;
+    vga_rst_n_o         : out std_logic;
+    psave_o             : out std_logic;
+    sync_o              : out std_logic;
+    red_o               : out std_logic_vector(7 downto 0); 
+    green_o             : out std_logic_vector(7 downto 0); 
+    blue_o              : out std_logic_vector(7 downto 0)
+  );
+end component vga_top;
 
 begin
 
@@ -165,6 +254,47 @@ begin
   --                     "0001"   C_BASEADDR + 0xC
   -- 
   ------------------------------------------
+  vga_top_i: vag_top port map (
+			
+	clk_i               => clk_s,
+    reset_n_i           => reset_n_s
+    --
+    direct_mode_i       => direct_mode_s, -- 0 - text and graphics interface mode, 1 - direct mode (direct force RGB component)
+    dir_red_i           => dir_red_s,
+    dir_green_i         => dir_green_s,
+    dir_blue_i          => dir_blue_s,
+    dir_pixel_column_o  => dir_pixel_column_o_U,
+    dir_pixel_row_o   	=> dir_pixel_row_o_U,
+    -- mode interface
+    display_mode_i      => display_mode_s,  -- 01 - text mode, 10 - graphics mode, 11 - text and graphics
+    -- text mode interface
+    text_addr_i         => text_addr_s,
+    text_data_i         => text_data_s,
+    text_we_i           => text_we_s,
+    -- graphics mode interface
+    graph_addr_i        => graph_addr_s,
+    graph_data_i        => graph_data_s,
+    graph_we_i          => graph_we_s,
+    -- cfg
+    font_size_i         => font_size_s,
+    show_frame_i        => show_frame_s,
+    foreground_color_i  => foreground_color_s,
+    background_color_i  => background_color_s,
+    frame_color_i       => frame_color_s,
+    -- vga
+    vga_hsync_o         => vga_hsync_o_U,
+    vga_vsync_o         => vga_vsync_o_U,
+    blank_o             => blank_o_U,
+    pix_clock_o         => pix_clock_o_U,
+    vga_rst_n_o         => vga_rst_n_o_U,
+    psave_o             => psave_o_U,
+    sync_o              => sync_o_U,
+    red_o               => red_o_U,
+    green_o             => green_o_U,
+    blue_o 				=> blue_o_U
+	
+  );
+  
   LED_Data <= slv_reg0(7 downto 0);
   slv_reg_write_sel <= Bus2IP_WrCE(0 downto 0);
   slv_reg_read_sel  <= Bus2IP_RdCE(0 downto 0);
