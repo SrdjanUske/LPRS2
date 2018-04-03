@@ -45,7 +45,7 @@ WARNING:Security:42 - Your software subscription period has lapsed. Your current
 <msg type="info" file="EDK" num="4130" delta="old" >IPNAME: <arg fmt="%s" index="1">bram_block</arg>, INSTANCE:<arg fmt="%s" index="2">microblaze_0_bram_block</arg> - <arg fmt="%s" index="3">tool</arg> is overriding <arg fmt="%s" index="4">PARAMETER</arg> <arg fmt="%s" index="5">C_MEMSIZE</arg> value to <arg fmt="%s" index="6">0x8000</arg> - <arg fmt="%s" index="7">C:\Xilinx\14.6\ISE_DS\EDK\hw\XilinxProcessorIPLib\pcores\bram_block_v1_00_a\data\bram_block_v2_1_0.mpd line 78</arg> 
 </msg>
 
-<msg type="warning" file="EDK" num="4181" delta="new" >PORT: <arg fmt="%s" index="1">GPIO_IO_T</arg>, CONNECTOR: <arg fmt="%s" index="2">DIP_Switches_GPIO_IO_T</arg> - floating connection - <arg fmt="%s" index="3">D:\RA60-2015\bukibratelab3vec\system.mhs line 159</arg> 
+<msg type="warning" file="EDK" num="4181" delta="old" >PORT: <arg fmt="%s" index="1">GPIO_IO_T</arg>, CONNECTOR: <arg fmt="%s" index="2">DIP_Switches_GPIO_IO_T</arg> - floating connection - <arg fmt="%s" index="3">D:\RA60-2015\LPRS2\lab3\project\system.mhs line 159</arg> 
 </msg>
 
 <msg type="info" file="EDK" num="4130" delta="old" >IPNAME: <arg fmt="%s" index="1">lmb_bram_if_cntlr</arg>, INSTANCE:<arg fmt="%s" index="2">microblaze_0_i_bram_ctrl</arg> - <arg fmt="%s" index="3">tcl</arg> is overriding <arg fmt="%s" index="4">PARAMETER</arg> <arg fmt="%s" index="5">C_MASK</arg> value to <arg fmt="%s" index="6">0x40000000</arg> - <arg fmt="%s" index="7">C:\Xilinx\14.6\ISE_DS\EDK\hw\XilinxProcessorIPLib\pcores\lmb_bram_if_cntlr_v3_10_c\data\lmb_bram_if_cntlr_v2_1_0.mpd line 92</arg> 
@@ -75,8 +75,17 @@ WARNING:Security:42 - Your software subscription period has lapsed. Your current
 <msg type="info" file="EDK" num="4211" delta="old" >The following instances are synthesized with <arg fmt="%s" index="1">XST</arg>. The MPD option IMP_NETLIST=TRUE indicates that a NGC file is to be produced using <arg fmt="%s" index="2">XST</arg> synthesis. IMP_NETLIST=FALSE (default) instances are not synthesized. 
 </msg>
 
+<msg type="error" file="EDK" num="546" delta="old" >Aborting XST flow execution!
+</msg>
+
+<msg type="info" file="EDK" num="2246" delta="old" >Refer to <arg fmt="%s" index="1">D:\RA60-2015\LPRS2\lab3\project\synthesis\system_my_peripheral_1_wrapper_xst.srp</arg> for details
+</msg>
+
 <msg type="info" file="EDK" num="3509" delta="old" >NCF files should not be modified as they will be regenerated.
 If any constraint needs to be overridden, this should be done by modifying the data/<arg fmt="%s" index="1">system</arg>.ucf file.
+</msg>
+
+<msg type="error" file="EDK" num="440" delta="old" ><arg fmt="%s" index="1">platgen</arg> failed with errors!
 </msg>
 
 </messages>

@@ -123,7 +123,14 @@ C:/Xilinx/14.6/ISE_DS/EDK/hw/XilinxProcessorIPLib/pcores/axi_lite_ipif_v1_01_a/h
 C:/Xilinx/14.6/ISE_DS/EDK/hw/XilinxProcessorIPLib/pcores/axi_lite_ipif_v1_01_a/hdl/vhdl/slave_attachment.vhd \
 C:/Xilinx/14.6/ISE_DS/EDK/hw/XilinxProcessorIPLib/pcores/axi_lite_ipif_v1_01_a/hdl/vhdl/axi_lite_ipif.vhd \
 pcores/my_peripheral_v1_00_a/hdl/vhdl/user_logic.vhd \
-pcores/my_peripheral_v1_00_a/hdl/vhdl/my_peripheral.vhd
+pcores/my_peripheral_v1_00_a/hdl/vhdl/my_peripheral.vhd \
+pcores/my_peripheral_v1_00_a/hdl/vhdl/char_rom.vhd \
+pcores/my_peripheral_v1_00_a/hdl/vhdl/graphics_mem.vhd \
+pcores/my_peripheral_v1_00_a/hdl/vhdl/text_mem.vhd \
+pcores/my_peripheral_v1_00_a/hdl/vhdl/top.vhd \
+pcores/my_peripheral_v1_00_a/hdl/vhdl/vga.vhd \
+pcores/my_peripheral_v1_00_a/hdl/vhdl/vga_sync.vhd \
+pcores/my_peripheral_v1_00_a/hdl/vhdl/vga_top.vhd
 
 WRAPPER_NGC_FILES = implementation/system_proc_sys_reset_0_wrapper.ngc \
 implementation/system_microblaze_0_ilmb_wrapper.ngc \

@@ -22,10 +22,12 @@ entity text_mem is
     );
   port(
     clk_i     : in  std_logic;
-    reset_n_i : in  std_logic;             
+    reset_n_i : in  std_logic;
+	wr_clk_i  : in  std_logic;
+    rd_clk_i  : in  std_logic;
     wr_addr_i : in  std_logic_vector(MEM_ADDR_WIDTH-1 downto 0);     -- Slave address input
     rd_addr_i : in  std_logic_vector(MEM_ADDR_WIDTH-1 downto 0);     -- Slave address input
-    wr_data_i : in  std_logic_vector(MEM_DATA_WIDTH-1 downto 0);     -- Write data output
+	wr_data_i : in  std_logic_vector(MEM_DATA_WIDTH-1 downto 0);     -- Write data output
     we_i      : in  std_logic;                                       -- 1-write transaction
     rd_data_o : out std_logic_vector(MEM_DATA_WIDTH-1 downto 0)      -- read data output
     );
@@ -44,19 +46,57 @@ architecture arc_text_mem of text_mem is
   --        2 => "000010",
           others => (others => '0')
           );
+		  
+  signal mem_up_addr : std_logic_vector(MEM_ADDR_WIDTH-1 downto 0);
+  signal mem_lo_addr : std_logic_vector(5-1 downto 0);
+  
+  signal rd_value : std_logic_vector(MEM_DATA_WIDTH-1 downto 0);
+  signal rd_addr : std_logic_vector(MEM_DATA_WIDTH-1 downto 0);
+  
+  signal index_0_t : natural;
+  signal index_0   : natural;
+  signal index_1_t : natural;
+  signal index_1   : natural;
+  signal index_2_t : natural;
+  signal index_2   : natural;
   
 begin
+
+  mem_up_addr <= "000"   & rd_addr_i(MEM_ADDR_WIDTH-1 downto 3) when (MEM_DATA_WIDTH = 8) else
+                 "0000"  & rd_addr_i(MEM_ADDR_WIDTH-1 downto 4) when (MEM_DATA_WIDTH = 16) else
+                 "00000" & rd_addr_i(MEM_ADDR_WIDTH-1 downto 5);
+
+  mem_lo_addr <= "00" & rd_addr_i(3-1 downto 0) when (MEM_DATA_WIDTH = 8) else
+                 '0'  & rd_addr_i(4-1 downto 0) when (MEM_DATA_WIDTH = 16) else
+                      rd_addr_i(5-1 downto 0);
   
-  DP_TEXT_MEM : process (clk_i) begin
-    if (rising_edge(clk_i)) then
+  DP_TEXT_MEM_WR : process (wr_clk_i) begin
+    if (rising_edge(wr_clk_i)) then
       if (we_i = '1') then
         text_mem(conv_integer(wr_addr_i)) <= wr_data_i; -- update img_mem from out_mem
       end if;
-      rd_data_o <= text_mem(conv_integer(index));
     end if;
   end process;
   
+  DP_TEXT_MEM_RD : process (rd_lk_i) begin
+    if (rising_edge(rd_clk_i)) then
+		rd_addr <= mem_up_addr;
+    end if;
+  end process;
+ 
+  rd_value <= text_mem(conv_integer(rd_addr));
+  rd_data_o <= text_mem(conv_integer(index));
+  
   index_t <= conv_integer(rd_addr_i);
   index   <= index_t when (index_t < text_mem'length) else 0;
+  
+  index_0_t <= conv_integer(mem_up_addr);
+  index_0   <= index_0_t when (index_0_t < text_mem'length) else 0;
+  
+  index_1_t <= conv_integer(mem_lo_addr);
+  index_1   <= index_1_t when (index_1_t < text_mem'length) else 0;
+  
+  index_2_t <= conv_integer(wr_addr_i);
+  index_2   <= index_2_t when (index_2_t < text_mem'length) else 0;
 
 end arc_text_mem;

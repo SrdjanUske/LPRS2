@@ -1,10 +1,10 @@
 Release 14.6 - xst P.68d (nt64)
 Copyright (c) 1995-2013 Xilinx, Inc.  All rights reserved.
---> Parameter TMPDIR set to D:\RA60-2015\bukibratelab3vec\synthesis\xst_temp_dir\
+--> Parameter TMPDIR set to D:\RA60-2015\LPRS2\lab3\project\synthesis\xst_temp_dir\
 
 
 Total REAL time to Xst completion: 0.00 secs
-Total CPU time to Xst completion: 0.05 secs
+Total CPU time to Xst completion: 0.06 secs
  
 --> 
 TABLE OF CONTENTS
@@ -35,7 +35,7 @@ TABLE OF CONTENTS
 ---- Source Parameters
 Input Format                       : MIXED
 Input File Name                    : "system_rs232_wrapper_xst.prj"
-Verilog Include Directory          : {"D:\RA60-2015\bukibratelab3vec\pcores\" "C:\Xilinx\14.6\ISE_DS\EDK\hw\XilinxBFMinterface\pcores\" "C:\Xilinx\14.6\ISE_DS\EDK\hw\XilinxProcessorIPLib\pcores\" }
+Verilog Include Directory          : {"D:\RA60-2015\LPRS2\lab3\project\pcores\" "C:\Xilinx\14.6\ISE_DS\EDK\hw\XilinxBFMinterface\pcores\" "C:\Xilinx\14.6\ISE_DS\EDK\hw\XilinxProcessorIPLib\pcores\" }
 
 ---- Target Parameters
 Target Device                      : xc6slx45fgg676-2
@@ -442,7 +442,7 @@ Parsing architecture <RTL> of entity <uartlite_core>.
 Parsing VHDL file "C:/Xilinx/14.6/ISE_DS/EDK/hw/XilinxProcessorIPLib/pcores/axi_uartlite_v1_02_a/hdl/vhdl/axi_uartlite.vhd" into library axi_uartlite_v1_02_a
 Parsing entity <axi_uartlite>.
 Parsing architecture <RTL> of entity <axi_uartlite>.
-Parsing VHDL file "D:\RA60-2015\bukibratelab3vec\hdl\system_rs232_wrapper.vhd" into library work
+Parsing VHDL file "D:\RA60-2015\LPRS2\lab3\project\hdl\system_rs232_wrapper.vhd" into library work
 Parsing entity <system_rs232_wrapper>.
 Parsing architecture <STRUCTURE> of entity <system_rs232_wrapper>.
 
@@ -499,7 +499,7 @@ INFO:HDLCompiler:679 - "C:/Xilinx/14.6/ISE_DS/EDK/hw/XilinxProcessorIPLib/pcores
 =========================================================================
 
 Synthesizing Unit <system_rs232_wrapper>.
-    Related source file is "D:\RA60-2015\bukibratelab3vec\hdl\system_rs232_wrapper.vhd".
+    Related source file is "D:\RA60-2015\LPRS2\lab3\project\hdl\system_rs232_wrapper.vhd".
     Summary:
 	no macro.
 Unit <system_rs232_wrapper> synthesized.
@@ -1175,8 +1175,8 @@ S_AXI_ACLK     |    4.288|         |         |         |
 =========================================================================
 
 
-Total REAL time to Xst completion: 5.00 secs
-Total CPU time to Xst completion: 5.42 secs
+Total REAL time to Xst completion: 6.00 secs
+Total CPU time to Xst completion: 5.56 secs
  
 --> 
 

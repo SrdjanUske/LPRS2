@@ -26,7 +26,9 @@ entity vga_top is
     MEM_SIZE             : natural := 4800
     );
   port (
-    clk_i               : in  std_logic;
+    --clk_i               : in  std_logic;
+	wr_clk_i            : in  std_logic;
+	rd_clk_i            : in  std_logic;
     reset_n_i           : in  std_logic;
     --
     direct_mode_i       : in  std_logic; -- 0 - text and graphics interface mode, 1 - direct mode (direct force RGB component)
@@ -73,7 +75,9 @@ architecture rtl of vga_top is
     V_RES           : natural := 480
    );
   port(
-    clk_i               : in  std_logic;
+    --clk_i               : in  std_logic;
+	wr_clk_i               : in  std_logic;
+	rd_clk_i               : in  std_logic;
     rst_n_i             : in  std_logic;
     --
     direct_mode_i       : in  std_logic; -- 0 - text and graphics interface mode, 1 - direct mode (direct force RGB component)
@@ -119,9 +123,11 @@ architecture rtl of vga_top is
     MEM_SIZE       : natural := 4800
     );
   port(
-    clk_i     : in  std_logic;
+    --clk_i     : in  std_logic;
     reset_n_i : in  std_logic;
     --
+	wr_clk_i     : in  std_logic;
+	rd_clk_i     : in  std_logic;
     wr_addr_i : in  std_logic_vector(MEM_ADDR_WIDTH-1 downto 0);
     rd_addr_i : in  std_logic_vector(MEM_ADDR_WIDTH-1 downto 0);
     wr_data_i : in  std_logic_vector(MEM_DATA_WIDTH-1 downto 0);
@@ -137,7 +143,7 @@ architecture rtl of vga_top is
     MEM_SIZE       : natural := 4800
     );
   port(
-    clk_i     : in  std_logic;
+   -- clk_i     : in  std_logic;
     reset_n_i : in  std_logic;
     --          
     wr_addr_i : in  std_logic_vector(MEM_ADDR_WIDTH-1 downto 0);
@@ -156,6 +162,8 @@ architecture rtl of vga_top is
   signal grid_size              : integer; -- size of step based on char size
   
   signal pix_clk_s              : std_logic;
+  signal pix_clk_wr_s           : std_logic;
+  signal pix_clk_rd_s           : std_logic;
   signal vga_rst_n_s            : std_logic;
   
   signal pixel_row_s            : std_logic_vector(11-1 downto 0);
@@ -187,7 +195,9 @@ begin
     V_RES           => V_RES
     )
   port map (
-    clk_i               => clk_i,
+   -- clk_i               => clk_i,
+	wr_clk_i            => wr_clk_i, -- Da li ce ovo biti dobro da iz User_logica uzme clockove?
+	rd_clk_i            => rd_clk_i,
     rst_n_i             => reset_n_i,
     --
     direct_mode_i       => direct_mode_i,
@@ -240,6 +250,9 @@ begin
   port map(
     clk_i     => pix_clk_s,
     reset_n_i => vga_rst_n_s,
+	
+	wr_clk_i => pix_clk_wr_s,
+    rd_clk_i => pix_clk_rd_s, 
     --
     wr_addr_i => text_addr_i,
     wr_data_i => text_data_i,
@@ -257,6 +270,9 @@ begin
   port map(
     clk_i     => pix_clk_s,
     reset_n_i => vga_rst_n_s,
+	
+	wr_clk_i => pix_clk_wr_s,
+    rd_clk_i => pix_clk_rd_s, 
     --
     wr_addr_i => graph_addr_i,
     wr_data_i => graph_data_i,
@@ -304,6 +320,8 @@ begin
                8;
 
   pix_clock_o <= pix_clk_s;
+  pix_clk_wr_s <= wr_clk_i;
+  pix_clk_rd_s <= rd_clk_i;
   vga_rst_n_o <= vga_rst_n_s;
 
 end rtl;

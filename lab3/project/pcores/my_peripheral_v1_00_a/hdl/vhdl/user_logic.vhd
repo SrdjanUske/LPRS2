@@ -91,7 +91,15 @@ entity user_logic is
     -- DO NOT EDIT BELOW THIS LINE ---------------------
     -- Bus protocol parameters, do not add to or delete
     C_NUM_REG                      : integer              := 1;
-    C_SLV_DWIDTH                   : integer              := 32
+    C_SLV_DWIDTH                   : integer              := 32;
+	 H_RES                : natural := 640;
+    V_RES                : natural := 480;
+    MEM_ADDR_WIDTH       : natural := 32;
+    GRAPH_MEM_ADDR_WIDTH : natural := 32;
+    TEXT_MEM_DATA_WIDTH  : natural := 32;
+    GRAPH_MEM_DATA_WIDTH : natural := 32;
+    RES_TYPE             : natural := 0;       
+    MEM_SIZE             : natural := 4800
     -- DO NOT EDIT ABOVE THIS LINE ---------------------
   );
   port
@@ -114,14 +122,17 @@ entity user_logic is
     red_o_U               : out std_logic_vector(7 downto 0); 
     green_o_U             : out std_logic_vector(7 downto 0); 
     blue_o_U              : out std_logic_vector(7 downto 0);
+	-----------wr 
 	clk_i                 : in  std_logic;
     rst_n_i               : in  std_logic;
 
     -- DO NOT EDIT BELOW THIS LINE ---------------------
     -- Bus protocol ports, do not add to or delete
-    Bus2IP_Clk                     : in  std_logic;
+    --rd
+	Bus2IP_Clk                     : in  std_logic;
     Bus2IP_Resetn                  : in  std_logic;
     Bus2IP_Data                    : in  std_logic_vector(C_SLV_DWIDTH-1 downto 0);
+	Bus2IP_Addr					   : in	 std_logic_vector(C_SLV_DWIDTH-1 downto 0);	
     Bus2IP_BE                      : in  std_logic_vector(C_SLV_DWIDTH/8-1 downto 0);
     Bus2IP_RdCE                    : in  std_logic_vector(C_NUM_REG-1 downto 0);
     Bus2IP_WrCE                    : in  std_logic_vector(C_NUM_REG-1 downto 0);
@@ -195,6 +206,9 @@ architecture IMP of user_logic is
   port (
     clk_i               : in  std_logic;
     reset_n_i           : in  std_logic;
+	wr_clk_i               : in  std_logic;
+	rd_clk_i               : in  std_logic;
+	
     --
     direct_mode_i       : in  std_logic; -- 0 - text and graphics interface mode, 1 - direct mode (direct force RGB component)
     dir_red_i           : in  std_logic_vector(7 downto 0);
@@ -254,10 +268,12 @@ begin
   --                     "0001"   C_BASEADDR + 0xC
   -- 
   ------------------------------------------
-  vga_top_i: vag_top port map (
+  vga_top_i: vga_top port map (
 			
 	clk_i               => clk_s,
-    reset_n_i           => reset_n_s
+    reset_n_i           => reset_n_s,
+	rd_clk_i            => clk_i,
+	wr_clk_i 			=> Bus2IP_Clk,
     --
     direct_mode_i       => direct_mode_s, -- 0 - text and graphics interface mode, 1 - direct mode (direct force RGB component)
     dir_red_i           => dir_red_s,
@@ -332,7 +348,7 @@ begin
       when others => slv_ip2bus_data <= (others => '0');
     end case;
 
-  end process SLAVE_REG_READ_PROC;
+  end process SLAVE_REG_READ_PROC; 
 
   ------------------------------------------
   -- Example code to drive IP to Bus signals
@@ -343,5 +359,8 @@ begin
   IP2Bus_WrAck <= slv_write_ack;
   IP2Bus_RdAck <= slv_read_ack;
   IP2Bus_Error <= '0';
+  
+  clk_s <= Bus2IP_Clk;
+  reset_n_s <= Bus2IP_Resetn;
 
 end IMP;

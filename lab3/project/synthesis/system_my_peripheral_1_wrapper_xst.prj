@@ -119,6 +119,13 @@ vhdl proc_common_v3_00_a C:\Xilinx\14.6\ISE_DS\EDK\hw\XilinxProcessorIPLib\pcore
 vhdl axi_lite_ipif_v1_01_a C:\Xilinx\14.6\ISE_DS\EDK\hw\XilinxProcessorIPLib\pcores\axi_lite_ipif_v1_01_a/hdl/vhdl/address_decoder.vhd
 vhdl axi_lite_ipif_v1_01_a C:\Xilinx\14.6\ISE_DS\EDK\hw\XilinxProcessorIPLib\pcores\axi_lite_ipif_v1_01_a/hdl/vhdl/slave_attachment.vhd
 vhdl axi_lite_ipif_v1_01_a C:\Xilinx\14.6\ISE_DS\EDK\hw\XilinxProcessorIPLib\pcores\axi_lite_ipif_v1_01_a/hdl/vhdl/axi_lite_ipif.vhd
-vhdl my_peripheral_v1_00_a D:\RA60-2015\bukibratelab3vec\pcores\my_peripheral_v1_00_a/hdl/vhdl/user_logic.vhd
-vhdl my_peripheral_v1_00_a D:\RA60-2015\bukibratelab3vec\pcores\my_peripheral_v1_00_a/hdl/vhdl/my_peripheral.vhd
+vhdl my_peripheral_v1_00_a D:\RA60-2015\LPRS2\lab3\project\pcores\my_peripheral_v1_00_a/hdl/vhdl/user_logic.vhd
+vhdl my_peripheral_v1_00_a D:\RA60-2015\LPRS2\lab3\project\pcores\my_peripheral_v1_00_a/hdl/vhdl/my_peripheral.vhd
+vhdl my_peripheral_v1_00_a D:\RA60-2015\LPRS2\lab3\project\pcores\my_peripheral_v1_00_a/hdl/vhdl/char_rom.vhd
+vhdl my_peripheral_v1_00_a D:\RA60-2015\LPRS2\lab3\project\pcores\my_peripheral_v1_00_a/hdl/vhdl/graphics_mem.vhd
+vhdl my_peripheral_v1_00_a D:\RA60-2015\LPRS2\lab3\project\pcores\my_peripheral_v1_00_a/hdl/vhdl/text_mem.vhd
+vhdl my_peripheral_v1_00_a D:\RA60-2015\LPRS2\lab3\project\pcores\my_peripheral_v1_00_a/hdl/vhdl/top.vhd
+vhdl my_peripheral_v1_00_a D:\RA60-2015\LPRS2\lab3\project\pcores\my_peripheral_v1_00_a/hdl/vhdl/vga.vhd
+vhdl my_peripheral_v1_00_a D:\RA60-2015\LPRS2\lab3\project\pcores\my_peripheral_v1_00_a/hdl/vhdl/vga_sync.vhd
+vhdl my_peripheral_v1_00_a D:\RA60-2015\LPRS2\lab3\project\pcores\my_peripheral_v1_00_a/hdl/vhdl/vga_top.vhd
 vhdl work ../hdl/system_my_peripheral_1_wrapper.vhd

@@ -1,6 +1,6 @@
 Release 14.6 - xst P.68d (nt64)
 Copyright (c) 1995-2013 Xilinx, Inc.  All rights reserved.
---> Parameter TMPDIR set to D:\RA60-2015\bukibratelab3vec\synthesis\xst_temp_dir\
+--> Parameter TMPDIR set to D:\RA60-2015\LPRS2\lab3\project\synthesis\xst_temp_dir\
 
 
 Total REAL time to Xst completion: 0.00 secs
@@ -35,7 +35,7 @@ TABLE OF CONTENTS
 ---- Source Parameters
 Input Format                       : MIXED
 Input File Name                    : "system_microblaze_0_dlmb_wrapper_xst.prj"
-Verilog Include Directory          : {"D:\RA60-2015\bukibratelab3vec\pcores\" "C:\Xilinx\14.6\ISE_DS\EDK\hw\XilinxBFMinterface\pcores\" "C:\Xilinx\14.6\ISE_DS\EDK\hw\XilinxProcessorIPLib\pcores\" }
+Verilog Include Directory          : {"D:\RA60-2015\LPRS2\lab3\project\pcores\" "C:\Xilinx\14.6\ISE_DS\EDK\hw\XilinxBFMinterface\pcores\" "C:\Xilinx\14.6\ISE_DS\EDK\hw\XilinxProcessorIPLib\pcores\" }
 
 ---- Target Parameters
 Target Device                      : xc6slx45fgg676-2
@@ -65,7 +65,7 @@ Cores Search Directories           : {../implementation}
 Parsing VHDL file "C:/Xilinx/14.6/ISE_DS/EDK/hw/XilinxProcessorIPLib/pcores/lmb_v10_v2_00_b/hdl/vhdl/lmb_v10.vhd" into library lmb_v10_v2_00_b
 Parsing entity <lmb_v10>.
 Parsing architecture <IMP> of entity <lmb_v10>.
-Parsing VHDL file "D:\RA60-2015\bukibratelab3vec\hdl\system_microblaze_0_dlmb_wrapper.vhd" into library work
+Parsing VHDL file "D:\RA60-2015\LPRS2\lab3\project\hdl\system_microblaze_0_dlmb_wrapper.vhd" into library work
 Parsing entity <system_microblaze_0_dlmb_wrapper>.
 Parsing architecture <STRUCTURE> of entity <system_microblaze_0_dlmb_wrapper>.
 
@@ -83,7 +83,7 @@ WARNING:HDLCompiler:89 - "C:/Xilinx/14.6/ISE_DS/EDK/hw/XilinxProcessorIPLib/pcor
 =========================================================================
 
 Synthesizing Unit <system_microblaze_0_dlmb_wrapper>.
-    Related source file is "D:\RA60-2015\bukibratelab3vec\hdl\system_microblaze_0_dlmb_wrapper.vhd".
+    Related source file is "D:\RA60-2015\LPRS2\lab3\project\hdl\system_microblaze_0_dlmb_wrapper.vhd".
     Summary:
 	no macro.
 Unit <system_microblaze_0_dlmb_wrapper> synthesized.
@@ -287,7 +287,7 @@ Cross Clock Domains Report:
 
 
 Total REAL time to Xst completion: 3.00 secs
-Total CPU time to Xst completion: 3.79 secs
+Total CPU time to Xst completion: 3.45 secs
  
 --> 
 

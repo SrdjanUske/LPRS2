@@ -22,7 +22,7 @@ WARNING:EDK - INFO:Security:50 - The XILINXD_LICENSE_FILE environment variable
    qualify for Xilinx software updates or new releases.
 
 
-Parse D:/RA60-2015/bukibratelab3vec/system.mhs ...
+Parse D:/RA60-2015/LPRS2/lab3/project/system.mhs ...
 
 Read MPD definitions ...
 
@@ -84,7 +84,7 @@ IPNAME: axi_interconnect, INSTANCE: axi4lite_0 - 1 master(s) : 4 slave(s)
 
 Checking port drivers...
 WARNING:EDK:4181 - PORT: GPIO_IO_T, CONNECTOR: DIP_Switches_GPIO_IO_T - floating
-   connection - D:\RA60-2015\bukibratelab3vec\system.mhs line 159 
+   connection - D:\RA60-2015\LPRS2\lab3\project\system.mhs line 159 
 
 Performing Clock DRCs...
 
@@ -167,38 +167,42 @@ Managing hardware (BBD-specified) netlist files ...
 
 Managing cache ...
 IPNAME:proc_sys_reset INSTANCE:proc_sys_reset_0 -
-D:\RA60-2015\bukibratelab3vec\system.mhs line 23 - Copying cache implementation
-netlist
+D:\RA60-2015\LPRS2\lab3\project\system.mhs line 23 - Copying cache
+implementation netlist
 IPNAME:lmb_v10 INSTANCE:microblaze_0_ilmb -
-D:\RA60-2015\bukibratelab3vec\system.mhs line 36 - Copying cache implementation
-netlist
+D:\RA60-2015\LPRS2\lab3\project\system.mhs line 36 - Copying cache
+implementation netlist
 IPNAME:lmb_bram_if_cntlr INSTANCE:microblaze_0_i_bram_ctrl -
-D:\RA60-2015\bukibratelab3vec\system.mhs line 43 - Copying cache implementation
-netlist
+D:\RA60-2015\LPRS2\lab3\project\system.mhs line 43 - Copying cache
+implementation netlist
 IPNAME:lmb_v10 INSTANCE:microblaze_0_dlmb -
-D:\RA60-2015\bukibratelab3vec\system.mhs line 52 - Copying cache implementation
-netlist
+D:\RA60-2015\LPRS2\lab3\project\system.mhs line 52 - Copying cache
+implementation netlist
 IPNAME:lmb_bram_if_cntlr INSTANCE:microblaze_0_d_bram_ctrl -
-D:\RA60-2015\bukibratelab3vec\system.mhs line 59 - Copying cache implementation
-netlist
+D:\RA60-2015\LPRS2\lab3\project\system.mhs line 59 - Copying cache
+implementation netlist
 IPNAME:bram_block INSTANCE:microblaze_0_bram_block -
-D:\RA60-2015\bukibratelab3vec\system.mhs line 68 - Copying cache implementation
-netlist
+D:\RA60-2015\LPRS2\lab3\project\system.mhs line 68 - Copying cache
+implementation netlist
 IPNAME:microblaze INSTANCE:microblaze_0 -
-D:\RA60-2015\bukibratelab3vec\system.mhs line 75 - Copying cache implementation
-netlist
-IPNAME:mdm INSTANCE:debug_module - D:\RA60-2015\bukibratelab3vec\system.mhs line
-98 - Copying cache implementation netlist
-IPNAME:axi_uartlite INSTANCE:rs232 - D:\RA60-2015\bukibratelab3vec\system.mhs
+D:\RA60-2015\LPRS2\lab3\project\system.mhs line 75 - Copying cache
+implementation netlist
+IPNAME:mdm INSTANCE:debug_module - D:\RA60-2015\LPRS2\lab3\project\system.mhs
+line 98 - Copying cache implementation netlist
+IPNAME:axi_interconnect INSTANCE:axi4lite_0 -
+D:\RA60-2015\LPRS2\lab3\project\system.mhs line 124 - Copying cache
+implementation netlist
+IPNAME:axi_uartlite INSTANCE:rs232 - D:\RA60-2015\LPRS2\lab3\project\system.mhs
 line 132 - Copying cache implementation netlist
-IPNAME:axi_gpio INSTANCE:dip_switches - D:\RA60-2015\bukibratelab3vec\system.mhs
-line 147 - Copying cache implementation netlist
+IPNAME:axi_gpio INSTANCE:dip_switches -
+D:\RA60-2015\LPRS2\lab3\project\system.mhs line 147 - Copying cache
+implementation netlist
 
 Elaborating instances ...
 IPNAME:bram_block INSTANCE:microblaze_0_bram_block -
-D:\RA60-2015\bukibratelab3vec\system.mhs line 68 - elaborating IP
+D:\RA60-2015\LPRS2\lab3\project\system.mhs line 68 - elaborating IP
 IPNAME:clock_generator INSTANCE:clock_generator_0 -
-D:\RA60-2015\bukibratelab3vec\system.mhs line 111 - elaborating IP
+D:\RA60-2015\LPRS2\lab3\project\system.mhs line 111 - elaborating IP
 ClkGen elaborate status: PASSED
 ----------------------------------------
 ----------------------------------------
@@ -206,7 +210,7 @@ ClkGen elaborate status: PASSED
 Writing HDL for elaborated instances ...
 
 Inserting wrapper level ...
-Completion time: 1.00 seconds
+Completion time: 0.00 seconds
 
 Constructing platform-level connectivity ...
 Completion time: 0.00 seconds
@@ -222,22 +226,21 @@ Running XST synthesis ...
 INFO:EDK:4211 - The following instances are synthesized with XST. The MPD option
    IMP_NETLIST=TRUE indicates that a NGC file is to be produced using XST
    synthesis. IMP_NETLIST=FALSE (default) instances are not synthesized. 
-INSTANCE:clock_generator_0 - D:\RA60-2015\bukibratelab3vec\system.mhs line 111 -
+INSTANCE:clock_generator_0 - D:\RA60-2015\LPRS2\lab3\project\system.mhs line 111
+- Running XST synthesis
+INSTANCE:my_peripheral_1 - D:\RA60-2015\LPRS2\lab3\project\system.mhs line 162 -
 Running XST synthesis
-INSTANCE:axi4lite_0 - D:\RA60-2015\bukibratelab3vec\system.mhs line 124 -
-Running XST synthesis
-INSTANCE:my_peripheral_1 - D:\RA60-2015\bukibratelab3vec\system.mhs line 162 -
-Running XST synthesis
+ERROR:EDK:546 - Aborting XST flow execution!
+INFO:EDK:2246 - Refer to
+   D:\RA60-2015\LPRS2\lab3\project\synthesis\system_my_peripheral_1_wrapper_xst.
+   srp for details
 
 Running NGCBUILD ...
 IPNAME:system_clock_generator_0_wrapper INSTANCE:clock_generator_0 -
-D:\RA60-2015\bukibratelab3vec\system.mhs line 111 - Running NGCBUILD
-IPNAME:system_axi4lite_0_wrapper INSTANCE:axi4lite_0 -
-D:\RA60-2015\bukibratelab3vec\system.mhs line 124 - Running NGCBUILD
+D:\RA60-2015\LPRS2\lab3\project\system.mhs line 111 - Running NGCBUILD
 INFO:EDK:3509 - NCF files should not be modified as they will be regenerated.
    If any constraint needs to be overridden, this should be done by modifying
    the data/system.ucf file.
 
 Rebuilding cache ...
-
-Total run time: 41.00 seconds
+ERROR:EDK:440 - platgen failed with errors!
