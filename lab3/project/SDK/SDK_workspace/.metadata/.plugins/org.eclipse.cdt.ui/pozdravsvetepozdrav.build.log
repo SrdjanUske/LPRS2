@@ -1,6 +1,6 @@
-12:17:49 **** Incremental Build of configuration Debug for project pozdravsvetepozdrav ****
+11:05:25 **** Incremental Build of configuration Release for project pozdravsvetepozdrav ****
 make all 
 make: Ništa za napraviti za `all'.
 
-12:17:49 Build Finished (took 78ms)
+11:05:25 Build Finished (took 78ms)
 
