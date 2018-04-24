@@ -128,6 +128,7 @@ entity user_logic is
     red_o          : out std_logic_vector(7 downto 0);
     green_o        : out std_logic_vector(7 downto 0);
     blue_o         : out std_logic_vector(7 downto 0);
+	irq_o		   : out std_logic;
     -- ADD USER PORTS ABOVE THIS LINE ------------------
 
     -- DO NOT EDIT BELOW THIS LINE ---------------------
@@ -191,9 +192,14 @@ architecture IMP of user_logic is
   constant REG_ADDR_04       : std_logic_vector(GRAPH_MEM_ADDR_WIDTH-1 downto 0) := conv_std_logic_vector( 4, GRAPH_MEM_ADDR_WIDTH);
   constant REG_ADDR_05       : std_logic_vector(GRAPH_MEM_ADDR_WIDTH-1 downto 0) := conv_std_logic_vector( 5, GRAPH_MEM_ADDR_WIDTH);
   constant REG_ADDR_06       : std_logic_vector(GRAPH_MEM_ADDR_WIDTH-1 downto 0) := conv_std_logic_vector( 6, GRAPH_MEM_ADDR_WIDTH);
+  constant REG_ADDR_07       : std_logic_vector(GRAPH_MEM_ADDR_WIDTH-1 downto 0) := conv_std_logic_vector( 7, GRAPH_MEM_ADDR_WIDTH);
+  constant REG_ADDR_08       : std_logic_vector(GRAPH_MEM_ADDR_WIDTH-1 downto 0) := conv_std_logic_vector( 8, GRAPH_MEM_ADDR_WIDTH);
   
   constant update_period     : std_logic_vector(31 downto 0) := conv_std_logic_vector(1, 32);
   
+  signal v_sync_counter_tc   : std_logic_vector(31 downto 0);
+  signal s_EN                : std_logic;
+  signal s_TC                : std_logic;
   --addr_size = 15+6 = 21;+2 = 23
   
   -- 25:24
@@ -359,6 +365,8 @@ begin
             when REG_ADDR_04 => foreground_color <= Bus2IP_Data(23 downto 0);
             when REG_ADDR_05 => background_color <= Bus2IP_Data(23 downto 0);
             when REG_ADDR_06 => frame_color      <= Bus2IP_Data(23 downto 0);
+			when REG_ADDR_07 => v_sync_counter_tc <= Bus2IP_Data(31 downto 0);
+			when REG_ADDR_08 => s_EN 			 <= Bus2IP_Data(0);
             when others => null;
           end case;
         end if;
@@ -544,5 +552,8 @@ begin
     S  => '0'                -- 1-bit set input
   );
   pix_clock_n <= not(pix_clock_s);
+  
+  s_TC <= '1' when (dir_pixel_row = v_sync_counter_tc(10 downto 0)) else '0';
+  irq_o <= s_TC and s_EN;
 
 end IMP;

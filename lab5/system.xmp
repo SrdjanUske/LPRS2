@@ -24,6 +24,7 @@ UcfFile: data/system.ucf
 EnableParTimingError: 1
 ShowLicenseDialog: 1
 BInfo: 
+LockAddr: vga_periph_mem_0,C_S_AXI_MEM0_BASEADDR
 Processor: microblaze_0
 ElfImp: 
 ElfSim: 
